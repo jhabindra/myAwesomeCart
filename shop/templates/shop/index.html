@@ -61,7 +61,7 @@ body .no-padding {
               <p class="card-text">
                 {{product.0.desc}}
               </p>
-              <a href="#" class="btn btn-primary">Add to Cart</a>
+               <a id="pr{{product.0.id}}" class="btn btn-primary cart">Add To Cart</a>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ body .no-padding {
               <p class="card-text">
                 {{i.desc}}
               </p>
-              <a href="#" class="btn btn-primary">Add To Cart</a>
+              <a id="pr{{i.id}}"  class="btn btn-primary cart">Add To Cart</a>
             </div>
           </div>
         </div>
@@ -105,6 +105,35 @@ body .no-padding {
  {% endfor %}
 </div>
   {% endblock %}
+
+
+  {%block js%}
+  <script>
+    console.log('working')
+        if(localStorage.getItem('cart') == null){
+          var cart = {}
+        }
+        else{
+          cart = JSON.parse(localStorage.getItem('cart'))
+        }
+
+        $('.cart').click(function(){
+
+          var idStr = this.id.toString()
+          console.log(idStr)
+          if(cart[idStr] !=undefined){
+            cart[idStr] = cart[idStr]+1
+          }
+          else{
+            cart[idStr] = 1
+          }
+          
+         localStorage.setItem('cart',JSON.stringify(cart))
+         console.log(JSON.stringify(cart))
+        })
+  </script>
+     
+  {%endblock%}
 
 
 
