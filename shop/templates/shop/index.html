@@ -14,8 +14,8 @@
   margin-top: 100px !important;
 }
 .col-md-3 img {
-  width: 255px;
-  max-height: 355px;
+  max-width: 227px;
+  height: 242px;
 }
 
 
@@ -53,7 +53,7 @@ body .no-padding {
 
     <div class="container carousel-inner no-padding">
       <div class="carousel-item active">
-        <div class="col-xs-3 col-md-3 col-sm-3">
+        <!-- <div class="col-xs-3 col-md-3 col-sm-3">
           <div class="card" style="width: 18rem">
             <img class="card-img-top" src='/{{product.0.image}}'alt="Card image cap" />
             <div class="card-body">
@@ -64,9 +64,9 @@ body .no-padding {
                <a id="pr{{product.0.id}}" class="btn btn-primary cart">Add To Cart</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        {% for i in product|slice:"1:" %}
+        {% for i in product %}
         <div class="col-xs-3 col-md-3 col-sm-3">
           <div class="card" style="width: 18rem">
             <img class="card-img-top" src='{%static "shop/demo.jpeg" %}'alt="Card image cap" />
@@ -129,6 +129,7 @@ body .no-padding {
           }
           
          localStorage.setItem('cart',JSON.stringify(cart))
+         document.getElementById('cart').innerHTML = Object.keys(cart).length
          console.log(JSON.stringify(cart))
         })
   </script>
