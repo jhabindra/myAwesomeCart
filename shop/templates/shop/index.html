@@ -32,8 +32,9 @@ body .carousel-control-next-icon {
 }
 
 body .no-padding {
-  padding-left: 0;
+  padding-left: 20px;
   padding-right: 0;
+  
 }
 
 {% endblock %}
@@ -43,6 +44,7 @@ body .no-padding {
   <!-- Slides start from here -->
   {% for product , range ,nSlides in allProds %}
   <h2 class="my-4">Flash Sale on {{product.0.category}} - Recommended Items</h2>
+  <div class="row">
   <div id="demo{{forloop.counter}}" class="carousel slide my-3" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#demo{{forloop.counter}}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -75,7 +77,8 @@ body .no-padding {
               <p class="card-text">
                 {{i.desc}}
               </p>
-              <a id="pr{{i.id}}"  class="btn btn-primary cart">Add To Cart</a>
+              <a  id="pr{{i.id}}"  class="btn btn-primary cart">Add To Cart</a>
+              <a href="/shop/products/{{i.id}}" id="qv{{i.id}}"  class="btn btn-primary cart">QuickView</a>
             </div>
           </div>
         </div>
@@ -102,6 +105,7 @@ body .no-padding {
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </a>
+  </div>
  {% endfor %}
 </div>
   {% endblock %}

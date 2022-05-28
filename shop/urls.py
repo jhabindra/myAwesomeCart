@@ -9,6 +9,6 @@ urlpatterns = [
     path('contact/', views.contact,name='contactUs'),
     path('tracker/', views.tracker,name='TrackingStatus'),
     path('search/', views.search,name='Search'),
-    path('productview/', views.prodView,name='ProductView'),
+    path('products/<int:id>', views.productView,name='ProductView'),
     path('checkout/', views.checkout,name='CheckOut'),
 ]

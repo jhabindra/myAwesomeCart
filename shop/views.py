@@ -42,8 +42,10 @@ def tracker(request):
 def search(request):
     return HttpResponse('This is search page')
 
-def prodView(request):
-    return HttpResponse('This is prodview page')
+def productView(request,id):
+    product = Product.objects.filter(id=id)
+    print(product)
+    return render(request,'shop/productView.html',{'product':product[0]})
 
 def checkout(request):
     return HttpResponse('This is checkout page')
